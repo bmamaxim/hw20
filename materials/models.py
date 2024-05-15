@@ -5,7 +5,7 @@ from users.models import NULLABLE
 
 class Direction(models.Model):
 
-    title_direction = models.CharField(max_length=200, verbose_name='направление', **NULLABLE)
+    title_direction = models.CharField(max_length=200, verbose_name='направление')
     preview_direction = models.ImageField(upload_to='image/', verbose_name='герб', **NULLABLE)
     description_direction = models.CharField(max_length=1000, verbose_name='описание направления', **NULLABLE)
 
@@ -21,7 +21,7 @@ class Direction(models.Model):
 
 class Lesson(models.Model):
 
-    direction = models.ManyToManyField(Direction, on_delete=models.SET_NULL, verbose_name='курс')
+    direction = models.ForeignKey(Direction, on_delete=models.SET_NULL, verbose_name='курс', **NULLABLE)
     title_lesson = models.CharField(max_length=200, verbose_name='название урока', **NULLABLE)
     description_lesson = models.CharField(max_length=1000, verbose_name='описание урока', **NULLABLE)
     preview_lesson = models.ImageField(upload_to='image/', verbose_name='значек', **NULLABLE)

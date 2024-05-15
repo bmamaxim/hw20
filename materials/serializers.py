@@ -1,16 +1,16 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 
 from materials.models import Direction, Lesson
 
 
-class DirectionSerializer(serializers.ModelSerializer):
+class DirectionSerializer(ModelSerializer):
 
     class Meta:
         model = Direction
         fields = '__all__'
 
 
-class LessonSerializer(serializers.ModelSerializer):
+class LessonSerializer(ModelSerializer):
 
     class Meta:
         model = Lesson
