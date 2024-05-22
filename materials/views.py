@@ -7,7 +7,9 @@ from users.permissions import IsModerator, IsAdmin, IsOwner
 
 
 class DirectionViewSet(viewsets.ModelViewSet):
-
+    """
+    View set diretion clsases
+    """
     serializer_class = DirectionSerializer
     queryset = Direction.objects.all()
 
