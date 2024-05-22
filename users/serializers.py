@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from materials.serializers import DirectionSerializer
 from users.models import Payment, User
 
 
@@ -11,7 +10,7 @@ class PaymentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
-    payment = PaymentSerializer(source='payment_set', many=True)
+    payment = PaymentSerializer(source='payment_set', many=True, read_only=True)
 
     class Meta:
         model = User
