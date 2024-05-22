@@ -8,11 +8,10 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ('title_lesson', 'description_lesson')
+        fields = ('id', 'title_lesson', 'description_lesson', 'owner')
 
 
 class DirectionSerializer(serializers.ModelSerializer):
-    # lesson = LessonSerializer(source='lesson_set', many=True)
     lesson = SerializerMethodField()
 
     def get_lesson(self, direction):

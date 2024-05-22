@@ -7,6 +7,9 @@ from users.models import Payment, User
 
 
 class Command(BaseCommand):
+    """
+    Команда достает данные юзера из фикстуры и записывает в БД.
+    """
 
     def handle(self, *args, **kwargs):
 
