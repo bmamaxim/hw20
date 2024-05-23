@@ -40,3 +40,18 @@ class Lesson(models.Model):
 
         verbose_name = 'урок'
         verbose_name_plural = 'уроки'
+
+
+class Subscription(models.Model):
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='пользователь')
+    direction = models.ForeignKey(Direction, on_delete=models.CASCADE, verbose_name='курс')
+    date = models.DateTimeField(auto_now_add=True, verbose_name='дата подписки')
+
+    def __str__(self):
+        return f'{self.user} {self.direction}'
+
+    class Meta:
+
+        verbose_name = 'подписка'
+        verbose_name_plural = 'подписки'
