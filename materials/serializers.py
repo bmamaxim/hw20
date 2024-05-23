@@ -2,13 +2,15 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from materials.models import Direction, Lesson
+from materials.vatidators import UrlValidator
 
 
 class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ('id', 'title_lesson', 'description_lesson', 'owner')
+        fields = ('id', 'title_lesson', 'description_lesson', 'owner', 'url_lesson')
+        validators = [UrlValidator(field='url_lesson')]
 
 
 class DirectionSerializer(serializers.ModelSerializer):
