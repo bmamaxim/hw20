@@ -15,7 +15,7 @@ class DirectionViewSet(viewsets.ModelViewSet):
     """
     serializer_class = DirectionSerializer
     queryset = Direction.objects.all()
-    pagination_class = MaterialsPaginator
+    #pagination_class = MaterialsPaginator
 
     def perform_create(self, serializer):
         direction = serializer.save()
