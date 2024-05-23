@@ -14,16 +14,12 @@ class User(AbstractUser):
     country = models.CharField(max_length=200, verbose_name='страна', **NULLABLE)
     ver_code = models.CharField(max_length=4, verbose_name='код верификации', **NULLABLE)
 
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-
 
     class Meta:
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
-
-
 
     def __str__(self):
         return f"{self.email} {self.phone} {self.country}"
@@ -45,7 +41,6 @@ class Payment(models.Model):
     payment_sum = models.CharField(max_length=100, verbose_name='сумма оплаты', **NULLABLE)
     payment_method = models.CharField(max_length=100, choices=PAY_METHOD, verbose_name='способ оплаты', **NULLABLE)
     payment_date = models.DateField(auto_now_add=True, verbose_name='дата оплаты', **NULLABLE)
-
 
     def __str__(self):
         return (f'{self.payment_sum}'

@@ -42,6 +42,5 @@ class UserUpdateAPIView(generics.UpdateAPIView):
     queryset = User.objects.all()
 
 
-
 class UserDestroyAPIView(generics.DestroyAPIView):
     queryset = User.objects.all()

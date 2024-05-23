@@ -12,11 +12,9 @@ class Direction(models.Model):
     description_direction = models.CharField(max_length=1000, verbose_name='описание направления', **NULLABLE)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Владелец', **NULLABLE)
 
-
     def __str__(self):
         return (f'{self.title_direction}'
                 f'{self.description_direction}')
-
 
     class Meta:
 
@@ -33,12 +31,10 @@ class Lesson(models.Model):
     url_lesson = models.CharField(max_length=150, verbose_name='ссылка на урок', **NULLABLE)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Владелец', **NULLABLE)
 
-
     def __str__(self):
         return (f'{self.title_lesson}'
                 f'{self.description_lesson}'
                 f'{self.direction}')
-
 
     class Meta:
 

@@ -18,7 +18,6 @@ class DirectionViewSet(viewsets.ModelViewSet):
         direction.owner = self.request.user
         direction.save()
 
-
     def get_permissions(self):
         if self.action == "create":
             self.permission_classes = (~IsModerator,)
@@ -44,11 +43,9 @@ class LessonListAPIView(generics.ListAPIView):
     queryset = Lesson.objects.all()
 
 
-
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
