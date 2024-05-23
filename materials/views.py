@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from materials.models import Direction, Lesson
 from materials.serializers import DirectionSerializer, LessonSerializer
-from users.permissions import IsModerator, IsAdmin, IsOwner
+from users.permissions import IsModerator, IsOwner
 
 
 class DirectionViewSet(viewsets.ModelViewSet):
