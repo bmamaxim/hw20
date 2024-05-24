@@ -2,7 +2,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from materials.models import Lesson, Direction
+from materials.models import Lesson, Direction, Subscription
 from users.models import User
 
 
@@ -55,7 +55,8 @@ class MaterialsTestCase(APITestCase):
         self.assertEqual(
             response.json(),
             {'count': 1, 'next': None, 'previous': None, 'results': [
-                {'id': self.lesson.pk, 'title_lesson': 'test_test', 'description_lesson': 'test_test', 'owner': self.user.pk,
+                {'id': self.lesson.pk, 'title_lesson': 'test_test', 'description_lesson': 'test_test',
+                 'owner': self.user.pk,
                  'url_lesson': 'https://www.youtube.com/'}]}
         )
 
@@ -132,17 +133,28 @@ class SubscriptionTestCase(APITestCase):
         self.user = User.objects.create(email='testoff@mail.ru', password='llleike11')
         self.client.force_authenticate(user=self.user)
         self.direction = Direction.objects.create(title_direction='it', description_direction='it', owner=self.user)
-
-    def test_sub_create(self):
-        data = {
+        self.url = reverse('materials:sub')
+        self.data = {
             "user": self.user.id,
-            "course": self.direction.id
+            "direction": self.direction.id
         }
-        url = reverse('materials:sub')
-        print(url)
-        response = self.client.post(url, data)
-        print(response.json())
+    def test_sub_create(self):
+        response = self.client.post(self.url, self.data)
         self.assertEqual(
             response.status_code,
             status.HTTP_200_OK
+        )
+        self.assertEqual(
+            response.json(), {'message': 'подписка добавлена'}
+        )
+
+    def test_sub_delete(self):
+        Subscription.objects.create(user=self.user, direction=self.direction)
+        response = self.client.post(self.url, self.data)
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK
+        )
+        self.assertEqual(
+            response.json(), {'message': 'подписка удалена'}
         )
