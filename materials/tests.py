@@ -138,6 +138,7 @@ class SubscriptionTestCase(APITestCase):
             "user": self.user.id,
             "direction": self.direction.id
         }
+
     def test_sub_create(self):
         response = self.client.post(self.url, self.data)
         self.assertEqual(

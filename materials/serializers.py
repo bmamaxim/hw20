@@ -15,6 +15,7 @@ class LessonSerializer(serializers.ModelSerializer):
 
 class DirectionSerializer(serializers.ModelSerializer):
     lesson = SerializerMethodField()
+    subscription = SerializerMethodField()
 
     def get_lesson(self, direction):
         return Lesson.objects.filter(direction=direction).count()
@@ -29,6 +30,7 @@ class DirectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Direction
         fields = '__all__'
+
 
 class SubscriptionSerializer(serializers.ModelSerializer):
 

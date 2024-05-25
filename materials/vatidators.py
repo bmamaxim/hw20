@@ -1,6 +1,7 @@
 import re
 from rest_framework.serializers import ValidationError
 
+
 class UrlValidator:
 
     def __init__(self, field):
