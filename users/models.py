@@ -38,12 +38,14 @@ class Payment(models.Model):
     direction = models.ForeignKey(Direction, on_delete=models.SET_NULL, verbose_name='курс', **NULLABLE)
     lesson = models.ForeignKey(Lesson, on_delete=models.SET_NULL, verbose_name='урок', **NULLABLE)
     payment_sign = models.BooleanField(default=False, verbose_name='признак оплаты')
-    payment_sum = models.CharField(max_length=100, verbose_name='сумма оплаты', **NULLABLE)
+    amount = models.PositiveIntegerField(help_text='сумма оплаты', verbose_name='сумма оплаты', **NULLABLE)
     payment_method = models.CharField(max_length=100, choices=PAY_METHOD, verbose_name='способ оплаты', **NULLABLE)
     payment_date = models.DateField(auto_now_add=True, verbose_name='дата оплаты', **NULLABLE)
+    payment_id = models.CharField(max_length=300, verbose_name='id сессии оплаты', help_text='укажите id сессии', **NULLABLE)
+    link = models.URLField(max_length=400, verbose_name='ссылкак на оплату', help_text='ссылка на оплату', **NULLABLE)
 
     def __str__(self):
-        return (f'{self.payment_sum}'
+        return (f'{self.amount}'
                 f'{self.payment_method}'
                 f'{self.payment_date}')
 
