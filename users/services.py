@@ -18,17 +18,26 @@ def convert_rub_to_usd(amount):
     rate = CurrencyRates().get_rate('RUB', 'USD')
     return int(amount * rate)
 
-def create_stripe_price(amount):
+def create_stripe_product(direction):
+    """
+    Функция названия продукта оплаты
+    :param direction:
+    :return:
+    """
+    return stripe.Product.create(name=direction)
+
+def create_stripe_price(amount, product):
     """
     Функция создания цены в страйп.
-    :param amount:
+    :param product:
+    :param amount: int
     :return:
     """
 
     return stripe.Price.create(
         currency="rub",
         unit_amount=amount * 100,
-        product_data={"name": "payment"},
+        product={"name": product},
     )
 
 def create_stripe_session(price):

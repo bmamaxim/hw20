@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny
 
 from users.models import Payment, User
 from users.serializers import UserSerializer, PaymentSerializer
-from users.services import convert_rub_to_usd, create_stripe_price, create_stripe_session
+from users.services import convert_rub_to_usd, create_stripe_price, create_stripe_session, create_stripe_product
 
 
 class PaymentListAPIView(generics.ListAPIView):
@@ -29,9 +29,11 @@ class PaymentCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         payment = serializer.save(user=self.request.user)
+        product = create_stripe_product(payment.direction)
+        print(product)
         # для использования конвертации convert_rub_to_usd: users -> services
         # amount_in_dollars = convert_rub_to_usd(payment.amount)
-        price = create_stripe_price(payment.amount)
+        price = create_stripe_price(payment.amount, product.id)
         session_id, payment_link = create_stripe_session(price)
         payment.payment_id = session_id
         payment.link = payment_link
