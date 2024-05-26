@@ -38,7 +38,7 @@ def create_stripe_session(price):
     :return:
     """
     session = stripe.checkout.Session.create(
-        success_url="http://localhost/",
+        success_url="http://localhost:8000/",
         line_items=[{"price": price.get("id"), "quantity": 1}],
         mode="payment",
     )
