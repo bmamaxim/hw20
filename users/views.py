@@ -33,7 +33,7 @@ class PaymentCreateAPIView(generics.CreateAPIView):
         print(product)
         # для использования конвертации convert_rub_to_usd: users -> services
         # amount_in_dollars = convert_rub_to_usd(payment.amount)
-        price = create_stripe_price(payment.amount, product.id)
+        price = create_stripe_price(payment.amount, product['name'])
         session_id, payment_link = create_stripe_session(price)
         payment.payment_id = session_id
         payment.link = payment_link

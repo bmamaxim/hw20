@@ -24,7 +24,7 @@ def create_stripe_product(direction):
     :param direction:
     :return:
     """
-    return stripe.Product.create(name=direction)
+    return stripe.Product.create(name=direction.title_direction)
 
 def create_stripe_price(amount, product):
     """
@@ -37,7 +37,7 @@ def create_stripe_price(amount, product):
     return stripe.Price.create(
         currency="rub",
         unit_amount=amount * 100,
-        product={"name": product},
+        product_data={"name": product},
     )
 
 def create_stripe_session(price):
