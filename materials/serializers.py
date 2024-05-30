@@ -6,7 +6,6 @@ from materials.vatidators import UrlValidator
 
 
 class LessonSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Lesson
         fields = ('id', 'title_lesson', 'description_lesson', 'owner', 'url_lesson')
@@ -29,11 +28,10 @@ class DirectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Direction
-        fields = '__all__'
+        fields = ('id', 'title_direction', 'description_direction', 'owner', 'lesson', 'subscription')
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Subscription
         fields = ('user', 'direction')
