@@ -9,6 +9,7 @@ from materials.models import Direction, Lesson, Subscription
 from materials.paginators import MaterialsPaginator
 from materials.serializers import DirectionSerializer, LessonSerializer, SubscriptionSerializer
 from users.permissions import IsModerator, IsOwner
+from users.tasks import send_direction_create
 
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
@@ -121,8 +122,10 @@ class SubscriptionCreateAPIView(generics.CreateAPIView):
         if Subscription.objects.filter(user=user, direction=course_item).exists():
             Subscription.objects.get(user=user, direction=course_item).delete()
             message = 'подписка удалена'
+            send_direction_create.delay(user.email, message)
         else:
             Subscription.objects.create(user=user, direction=course_item)
             message = 'подписка добавлена'
+            send_direction_create.delay(user.email, message)
 
         return Response({"message": message})
