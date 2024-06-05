@@ -32,6 +32,6 @@ def last_activity():
         for user in users:
             if datetime.datetime.now(
                    pytz.timezone("Europe/Moscow")
-            ) - user.last_login > datetime.timedelta(minutes=5):
+            ) - user.last_login > datetime.timedelta(days=30):
                 user.is_active = False
                 user.save()
