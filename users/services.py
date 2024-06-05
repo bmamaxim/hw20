@@ -3,6 +3,7 @@ import stripe
 from config.settings import STRIPE_API_KEY
 from forex_python.converter import CurrencyRates
 
+
 stripe.api_key = STRIPE_API_KEY
 
 
@@ -18,6 +19,7 @@ def convert_rub_to_usd(amount):
     rate = CurrencyRates().get_rate('RUB', 'USD')
     return int(amount * rate)
 
+
 def create_stripe_product(direction):
     """
     Функция названия продукта оплаты
@@ -25,6 +27,7 @@ def create_stripe_product(direction):
     :return:
     """
     return stripe.Product.create(name=direction.title_direction)
+
 
 def create_stripe_price(amount, product):
     """
@@ -39,6 +42,7 @@ def create_stripe_price(amount, product):
         unit_amount=amount * 100,
         product_data={"name": product},
     )
+
 
 def create_stripe_session(price):
     """
