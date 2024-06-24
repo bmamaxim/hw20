@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "hw20"
+version = "0.1.0"
+description = ""
+authors = ["max"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.0.1"
+django = "4.2"
+ipython = "^8.24.0"
+djangorestframework = "^3.15.1"
+pillow = "^10.3.0"
+psycopg2 = "^2.9.9"
+django-filter = "^24.2"
+djangorestframework-simplejwt = "^5.3.1"
+drf-yasg = "^1.21.7"
+setuptools = "^70.0.0"
+stripe = "^9.8.0"
+forex-python = "^1.8"
+flake8 = "^7.0.0"
+celery = "^5.4.0"
+redis = "^5.0.4"
+django-celery-beat = "^2.6.0"
+black = "^24.4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
