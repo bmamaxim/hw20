@@ -9,21 +9,48 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('materials', '0001_initial'),
+        ("materials", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Subscription',
+            name="Subscription",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateTimeField(auto_now_add=True, verbose_name='дата подписки')),
-                ('direction', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='materials.direction', verbose_name='курс')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="дата подписки"
+                    ),
+                ),
+                (
+                    "direction",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="materials.direction",
+                        verbose_name="курс",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="пользователь",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'подписка',
-                'verbose_name_plural': 'подписки',
+                "verbose_name": "подписка",
+                "verbose_name_plural": "подписки",
             },
         ),
     ]

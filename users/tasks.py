@@ -10,7 +10,6 @@ from django.core.mail import send_mail
 from users.models import User
 
 
-
 @shared_task
 def send_direction_create(email, message):
     """
@@ -19,9 +18,7 @@ def send_direction_create(email, message):
     :param message:
     :return:
     """
-    send_mail('курс', message, EMAIL_HOST_USER, [email])
-
-
+    send_mail("курс", message, EMAIL_HOST_USER, [email])
 
 
 @shared_task
@@ -31,7 +28,7 @@ def last_activity():
     if users.exists():
         for user in users:
             if datetime.datetime.now(
-                   pytz.timezone("Europe/Moscow")
+                pytz.timezone("Europe/Moscow")
             ) - user.last_login > datetime.timedelta(days=30):
                 user.is_active = False
                 user.save()

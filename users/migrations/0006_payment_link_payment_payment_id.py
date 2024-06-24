@@ -6,18 +6,30 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0005_remove_payment_payment_sum_payment_amount'),
+        ("users", "0005_remove_payment_payment_sum_payment_amount"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='payment',
-            name='link',
-            field=models.URLField(blank=True, help_text='ссылка на оплату', max_length=400, null=True, verbose_name='ссылкак на оплату'),
+            model_name="payment",
+            name="link",
+            field=models.URLField(
+                blank=True,
+                help_text="ссылка на оплату",
+                max_length=400,
+                null=True,
+                verbose_name="ссылкак на оплату",
+            ),
         ),
         migrations.AddField(
-            model_name='payment',
-            name='payment_id',
-            field=models.CharField(blank=True, help_text='укажите id сессии', max_length=300, null=True, verbose_name='id сессии оплаты'),
+            model_name="payment",
+            name="payment_id",
+            field=models.CharField(
+                blank=True,
+                help_text="укажите id сессии",
+                max_length=300,
+                null=True,
+                verbose_name="id сессии оплаты",
+            ),
         ),
     ]

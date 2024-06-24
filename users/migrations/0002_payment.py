@@ -8,26 +8,83 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('materials', '0001_initial'),
-        ('users', '0001_initial'),
+        ("materials", "0001_initial"),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Payment',
+            name="Payment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('payment_sign', models.BooleanField(default=False, verbose_name='признак оплаты')),
-                ('payment_sum', models.CharField(blank=True, max_length=100, null=True, verbose_name='сумма оплаты')),
-                ('payment_method', models.CharField(blank=True, max_length=100, null=True, verbose_name='способ оплаты')),
-                ('payment_date', models.DateField(blank=True, null=True, verbose_name='дата оплаты')),
-                ('direction', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='materials.direction', verbose_name='курс')),
-                ('lesson', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='materials.lesson', verbose_name='урок')),
-                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='студент')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "payment_sign",
+                    models.BooleanField(default=False, verbose_name="признак оплаты"),
+                ),
+                (
+                    "payment_sum",
+                    models.CharField(
+                        blank=True,
+                        max_length=100,
+                        null=True,
+                        verbose_name="сумма оплаты",
+                    ),
+                ),
+                (
+                    "payment_method",
+                    models.CharField(
+                        blank=True,
+                        max_length=100,
+                        null=True,
+                        verbose_name="способ оплаты",
+                    ),
+                ),
+                (
+                    "payment_date",
+                    models.DateField(blank=True, null=True, verbose_name="дата оплаты"),
+                ),
+                (
+                    "direction",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="materials.direction",
+                        verbose_name="курс",
+                    ),
+                ),
+                (
+                    "lesson",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="materials.lesson",
+                        verbose_name="урок",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="студент",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'платеж',
-                'verbose_name_plural': 'платежи',
+                "verbose_name": "платеж",
+                "verbose_name_plural": "платежи",
             },
         ),
     ]

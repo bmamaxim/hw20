@@ -8,7 +8,7 @@ class UrlValidator:
         self.field = field
 
     def __call__(self, value):
-        reg = re.compile('https://www.youtube.com/')
+        reg = re.compile("https://www.youtube.com/")
         tmp_val = dict(value).get(self.field)
         if not bool(reg.match(tmp_val)):
-            raise ValidationError('only youtube')
+            raise ValidationError("only youtube")

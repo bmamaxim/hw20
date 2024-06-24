@@ -8,36 +8,105 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Direction',
+            name="Direction",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title_direction', models.CharField(max_length=200, verbose_name='направление')),
-                ('preview_direction', models.ImageField(blank=True, null=True, upload_to='image/', verbose_name='герб')),
-                ('description_direction', models.CharField(blank=True, max_length=1000, null=True, verbose_name='описание направления')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title_direction",
+                    models.CharField(max_length=200, verbose_name="направление"),
+                ),
+                (
+                    "preview_direction",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="image/", verbose_name="герб"
+                    ),
+                ),
+                (
+                    "description_direction",
+                    models.CharField(
+                        blank=True,
+                        max_length=1000,
+                        null=True,
+                        verbose_name="описание направления",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'курс',
-                'verbose_name_plural': 'курсы',
+                "verbose_name": "курс",
+                "verbose_name_plural": "курсы",
             },
         ),
         migrations.CreateModel(
-            name='Lesson',
+            name="Lesson",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title_lesson', models.CharField(blank=True, max_length=200, null=True, verbose_name='название урока')),
-                ('description_lesson', models.CharField(blank=True, max_length=1000, null=True, verbose_name='описание урока')),
-                ('preview_lesson', models.ImageField(blank=True, null=True, upload_to='image/', verbose_name='значек')),
-                ('url_lesson', models.CharField(blank=True, max_length=150, null=True, verbose_name='ссылка на урок')),
-                ('direction', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='materials.direction', verbose_name='курс')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title_lesson",
+                    models.CharField(
+                        blank=True,
+                        max_length=200,
+                        null=True,
+                        verbose_name="название урока",
+                    ),
+                ),
+                (
+                    "description_lesson",
+                    models.CharField(
+                        blank=True,
+                        max_length=1000,
+                        null=True,
+                        verbose_name="описание урока",
+                    ),
+                ),
+                (
+                    "preview_lesson",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="image/", verbose_name="значек"
+                    ),
+                ),
+                (
+                    "url_lesson",
+                    models.CharField(
+                        blank=True,
+                        max_length=150,
+                        null=True,
+                        verbose_name="ссылка на урок",
+                    ),
+                ),
+                (
+                    "direction",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="materials.direction",
+                        verbose_name="курс",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'урок',
-                'verbose_name_plural': 'уроки',
+                "verbose_name": "урок",
+                "verbose_name_plural": "уроки",
             },
         ),
     ]

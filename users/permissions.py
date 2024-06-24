@@ -5,20 +5,22 @@ class IsModerator(permissions.BasePermission):
     """
     Класс прав доступа модераторов.
     """
-    massage = 'moderatos only'
+
+    massage = "moderatos only"
 
     def has_permission(self, request, view):
-        return request.user.groups.filter(name='moderator').exists()
+        return request.user.groups.filter(name="moderator").exists()
 
 
 class IsAdmin(permissions.BasePermission):
     """
     Класс прав доступа администратора.
     """
-    massage = 'admin only'
+
+    massage = "admin only"
 
     def has_permission(self, request, view):
-        return request.user.groups.filter(name='admin').exists()
+        return request.user.groups.filter(name="admin").exists()
 
 
 class IsOwner(permissions.BasePermission):

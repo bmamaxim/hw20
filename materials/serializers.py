@@ -8,8 +8,8 @@ from materials.vatidators import UrlValidator
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
-        fields = ('id', 'title_lesson', 'description_lesson', 'owner', 'url_lesson')
-        validators = [UrlValidator(field='url_lesson')]
+        fields = ("id", "title_lesson", "description_lesson", "owner", "url_lesson")
+        validators = [UrlValidator(field="url_lesson")]
 
 
 class DirectionSerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class DirectionSerializer(serializers.ModelSerializer):
         return Lesson.objects.filter(direction=direction).count()
 
     def get_subscription(self, obj):
-        request = self.context.get('request')
+        request = self.context.get("request")
         user = None
         if request:
             user = request.user
@@ -28,10 +28,17 @@ class DirectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Direction
-        fields = ('id', 'title_direction', 'description_direction', 'owner', 'lesson', 'subscription')
+        fields = (
+            "id",
+            "title_direction",
+            "description_direction",
+            "owner",
+            "lesson",
+            "subscription",
+        )
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscription
-        fields = ('user', 'direction')
+        fields = ("user", "direction")

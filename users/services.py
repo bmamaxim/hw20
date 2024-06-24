@@ -16,7 +16,7 @@ def convert_rub_to_usd(amount):
     :return:
     """
     # c = CurrencyRates()
-    rate = CurrencyRates().get_rate('RUB', 'USD')
+    rate = CurrencyRates().get_rate("RUB", "USD")
     return int(amount * rate)
 
 
