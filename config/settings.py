@@ -188,3 +188,6 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": timedelta(days=30),
     },
 }
+
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+TELEGRAM_URL = os.getenv('TELEGRAM_URL')

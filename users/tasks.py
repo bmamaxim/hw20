@@ -1,8 +1,8 @@
 import datetime
-
+import requests
 import pytz
 from celery import shared_task
-
+from config import settings
 
 from config.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
@@ -18,8 +18,21 @@ def send_direction_create(email, message):
     :param message:
     :return:
     """
-    send_mail("курс", message, EMAIL_HOST_USER, [email])
+    print(email)
+    send_mail("курс", message, EMAIL_HOST_USER, email)
 
+
+@shared_task
+def send_telegram_message(chat_id, message):
+    """
+    Функция отправки сообщений в телеграмм.
+    """
+    print(chat_id)
+    params = {
+        'text': message,
+        'chat_id': chat_id,
+    }
+    requests.get(f'{settings.TELEGRAM_URL}{settings.BOT_TOKEN}/sendMessage', params=params)
 
 @shared_task
 def last_activity():
@@ -28,7 +41,7 @@ def last_activity():
     if users.exists():
         for user in users:
             if datetime.datetime.now(
-                pytz.timezone("Europe/Moscow")
+                    pytz.timezone("Europe/Moscow")
             ) - user.last_login > datetime.timedelta(days=30):
                 user.is_active = False
                 user.save()

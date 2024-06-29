@@ -13,7 +13,7 @@ from materials.serializers import (
     SubscriptionSerializer,
 )
 from users.permissions import IsModerator, IsOwner
-from users.tasks import send_direction_create
+from users.tasks import send_direction_create, send_telegram_message
 
 
 @method_decorator(
@@ -137,9 +137,11 @@ class SubscriptionCreateAPIView(generics.CreateAPIView):
             Subscription.objects.get(user=user, direction=course_item).delete()
             message = "подписка удалена"
             send_direction_create.delay(user.email, message)
+            send_telegram_message(user.tg_id, message)
         else:
             Subscription.objects.create(user=user, direction=course_item)
             message = "подписка добавлена"
             send_direction_create.delay(user.email, message)
+            send_telegram_message(user.tg_id, message)
 
         return Response({"message": message})

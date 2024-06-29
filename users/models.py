@@ -15,8 +15,8 @@ class User(AbstractUser):
     )
     phone = models.CharField(max_length=200, verbose_name="телефон", **NULLABLE)
     country = models.CharField(max_length=200, verbose_name="страна", **NULLABLE)
-    ver_code = models.CharField(
-        max_length=4, verbose_name="код верификации", **NULLABLE
+    tg_id = models.CharField(
+        max_length=50, verbose_name="id telegramm", **NULLABLE
     )
 
     USERNAME_FIELD = "email"
