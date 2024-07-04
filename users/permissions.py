@@ -25,7 +25,7 @@ class IsAdmin(permissions.BasePermission):
 
 class IsOwner(permissions.BasePermission):
     """
-    Класс пермишон прав доступа для объектов.
+    Класс прав доступа пользователя.
     """
 
     def has_object_permission(self, request, view, obj):
