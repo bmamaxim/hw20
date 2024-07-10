@@ -20,26 +20,19 @@ services:
       retries: 10
       timeout: 3s
 
-  migrations:
-    build: .
-    env_file: .env
-    command: sh -c "poetry run python manage.py migrate"
-    depends_on:
-      db:
-        condition: service_healthy
-
   app:
     build: .
     env_file: .env
     tty: true
     ports:
       - "8000:8000"
-    command: sh -c "poetry run python manage.py runserver 0.0.0.0:8000"
+    command: >
+      bash -c "python manage.py makemigrations
+      && python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000"
     depends_on:
       db:
         condition: service_healthy
-      migrations:
-        condition: service_completed_successfully
 
   celery:
     build: .

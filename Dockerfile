@@ -1,6 +1,9 @@
-FROM python:3.12 as builder
+FROM python:3.12-slim
+
 WORKDIR /app
-RUN pip install pip setuptools && pip install poetry
-COPY pyproject.toml poetry.lock ./
-RUN poetry install --no-dev
-COPY . .
+COPY pyproject.toml .
+RUN pip install --upgrade pip
+RUN pip install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root
+COPY .. .

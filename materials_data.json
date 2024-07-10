@@ -1,0 +1,165 @@
+[
+  {
+    "model": "materials.direction",
+    "pk": 3,
+    "fields": {
+      "title_direction": "¤ъюэюьшёЄ",
+      "preview_direction": "",
+      "description_direction": "яюяєы Ёэхр  яЁюЇхёёш ",
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.direction",
+    "pk": 4,
+    "fields": {
+      "title_direction": "¤ъюэюьшёЄ",
+      "preview_direction": "",
+      "description_direction": "яЁюЇхёёш ",
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.direction",
+    "pk": 5,
+    "fields": {
+      "title_direction": "test@mail.ru",
+      "preview_direction": "",
+      "description_direction": "123456",
+      "owner": 10
+    }
+  },
+  {
+    "model": "materials.direction",
+    "pk": 6,
+    "fields": {
+      "title_direction": "it",
+      "preview_direction": "",
+      "description_direction": "it",
+      "owner": 10
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 1,
+    "fields": {
+      "direction": null,
+      "title_lesson": "шёЄюЁш ",
+      "description_lesson": "юс∙хюсЁрчютрЄхы№э√щ яЁхфьхЄ",
+      "preview_lesson": "",
+      "url_lesson": "ёё√ыър яю тшЄё  яюёых эрўрыр ъєЁёр",
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 2,
+    "fields": {
+      "direction": null,
+      "title_lesson": "Їшчъєы№ЄєЁр",
+      "description_lesson": "юс∙хюсЁрчютрЄхы№э√щ яЁхфьхЄ",
+      "preview_lesson": "",
+      "url_lesson": "https://my.sky.pro/student-cabinet/stream-lesson/84255/theory/3",
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 4,
+    "fields": {
+      "direction": null,
+      "title_lesson": "шэЇюЁьрЄшър",
+      "description_lesson": "юс∙хюсЁрчютрЄхы№э√щ яЁхфьхЄ",
+      "preview_lesson": "",
+      "url_lesson": "https://www.youtube.com/watch?v=fzUI3NyJflw&ab_channel=selfedu",
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 9,
+    "fields": {
+      "direction": null,
+      "title_lesson": null,
+      "description_lesson": null,
+      "preview_lesson": "",
+      "url_lesson": null,
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 10,
+    "fields": {
+      "direction": null,
+      "title_lesson": null,
+      "description_lesson": null,
+      "preview_lesson": "",
+      "url_lesson": null,
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 11,
+    "fields": {
+      "direction": null,
+      "title_lesson": null,
+      "description_lesson": null,
+      "preview_lesson": "",
+      "url_lesson": null,
+      "owner": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 12,
+    "fields": {
+      "direction": null,
+      "title_lesson": null,
+      "description_lesson": null,
+      "preview_lesson": "",
+      "url_lesson": "https://www.youtube.com/watch?v=fzUI3NyJflw&ab_channel=selfedu",
+      "owner": 10
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 13,
+    "fields": {
+      "direction": null,
+      "title_lesson": "шёЄюЁш ",
+      "description_lesson": "юс∙хюсЁрчютрЄхы№э√щ яЁхфьхЄ",
+      "preview_lesson": "",
+      "url_lesson": "https://www.youtube.com/",
+      "owner": 10
+    }
+  },
+  {
+    "model": "materials.subscription",
+    "pk": 3,
+    "fields": {
+      "user": 10,
+      "direction": 3,
+      "date": "2024-05-29T17:26:21.525Z"
+    }
+  },
+  {
+    "model": "materials.subscription",
+    "pk": 14,
+    "fields": {
+      "user": 13,
+      "direction": 6,
+      "date": "2024-06-29T14:41:08.823Z"
+    }
+  },
+  {
+    "model": "materials.subscription",
+    "pk": 27,
+    "fields": {
+      "user": 13,
+      "direction": 4,
+      "date": "2024-07-06T13:41:00.278Z"
+    }
+  }
+]

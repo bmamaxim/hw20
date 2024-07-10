@@ -2,6 +2,8 @@ import datetime
 import requests
 import pytz
 from celery import shared_task
+from django.utils import timezone
+
 from config import settings
 
 from config.settings import EMAIL_HOST_USER
@@ -36,12 +38,12 @@ def send_telegram_message(chat_id, message):
 
 @shared_task
 def last_activity():
-    # today = timezone.now().today().date()
-    users = User.objects.filter(is_active=True)
+    today = timezone.now()
+    users = User.objects.all()
+    print(users.exists())
     if users.exists():
         for user in users:
-            if datetime.datetime.now(
-                    pytz.timezone("Europe/Moscow")
-            ) - user.last_login > datetime.timedelta(days=30):
+            print(user)
+            if today.today().date() - user.last_login > datetime.timedelta(days=1):
                 user.is_active = False
                 user.save()
