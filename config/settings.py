@@ -189,7 +189,7 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_BEAT_SCHEDULE = {
     "last_activity": {
         "task": "users.tasks.last_activity",
-        "schedule": timedelta(minutes=1),
+        "schedule": timedelta(days=30),
     },
 }
 

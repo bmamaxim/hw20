@@ -38,12 +38,15 @@ def send_telegram_message(chat_id, message):
 
 @shared_task
 def last_activity():
+    """
+    Функция проверки активности пользователя,
+    если пользователь не активен 30 дней блокируем учетку.
+    :return:
+    """
     today = timezone.now()
     users = User.objects.all()
-    print(users.exists())
     if users.exists():
         for user in users:
-            print(user)
-            if today.today().date() - user.last_login > datetime.timedelta(days=1):
+            if user.last_login and (today - user.last_login > datetime.timedelta(days=30)):
                 user.is_active = False
                 user.save()
